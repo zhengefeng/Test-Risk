@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.risk.dal.credit.mapper.ConsumerMapper">
+  <resultMap id="BaseResultMap" type="com.risk.dal.credit.entity.Consumer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="companyId" jdbcType="INTEGER" property="companyid" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyname" />
+    <result column="loginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="rankLevel" jdbcType="SMALLINT" property="ranklevel" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="cardId" jdbcType="INTEGER" property="cardid" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="mail" jdbcType="VARCHAR" property="mail" />
+    <result column="operName" jdbcType="VARCHAR" property="opername" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, companyId, loginName, name, password, rankLevel, status, cardId, address, phone, 
+    mail, operName, updateTime, createTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_consumer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from r_consumer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.risk.dal.credit.entity.Consumer">
+    insert into r_consumer (id, companyId, loginName, 
+      name, password, rankLevel, 
+      status, cardId, address, 
+      phone, mail, operName, 
+      updateTime, createTime)
+    values (#{id,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{ranklevel,jdbcType=SMALLINT}, 
+      #{status,jdbcType=SMALLINT}, #{cardid,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=INTEGER}, #{mail,jdbcType=VARCHAR}, #{opername,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.risk.dal.credit.entity.Consumer">
+    insert into r_consumer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyid != null">
+        companyId,
+      </if>
+      <if test="loginname != null">
+        loginName,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="ranklevel != null">
+        rankLevel,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="cardid != null">
+        cardId,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="mail != null">
+        mail,
+      </if>
+      <if test="opername != null">
+        operName,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null">
+        #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="ranklevel != null">
+        #{ranklevel,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="cardid != null">
+        #{cardid,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="mail != null">
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="opername != null">
+        #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.risk.dal.credit.entity.Consumer">
+    update r_consumer
+    <set>
+      <if test="companyid != null">
+        companyId = #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="loginname != null">
+        loginName = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="ranklevel != null">
+        rankLevel = #{ranklevel,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="cardid != null">
+        cardId = #{cardid,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="mail != null">
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="opername != null">
+        operName = #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.risk.dal.credit.entity.Consumer">
+    update r_consumer
+    set companyId = #{companyid,jdbcType=INTEGER},
+      loginName = #{loginname,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      rankLevel = #{ranklevel,jdbcType=SMALLINT},
+      status = #{status,jdbcType=SMALLINT},
+      cardId = #{cardid,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=INTEGER},
+      mail = #{mail,jdbcType=VARCHAR},
+      operName = #{opername,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <sql id="whereSql">
+  	<where>
+  	  <if test="companyid != null">
+        and companyId = #{companyid,jdbcType=INTEGER}
+      </if>
+      <if test="loginname != null and loginname != ''">
+        and loginName = #{loginname} 
+      </if>
+      <if test="name != null and name != ''">
+        and name like '%${name}%'
+      </if>
+      <if test="password != null and password != ''">
+        and password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="ranklevel != null">
+        and rankLevel = #{ranklevel,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        and status = #{status,jdbcType=SMALLINT}
+      </if>
+      <if test="cardid != null">
+        and cardId = #{cardid,jdbcType=INTEGER}
+      </if>
+      <if test="address != null">
+        and address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null and phone != ''">
+        and phone like '%${phone}%'
+      </if>
+      <if test="mail != null and mail != ''">
+        and mail like '%${mail}%'
+      </if>
+      <if test="opername != null">
+        and operName = #{opername,jdbcType=VARCHAR}
+      </if>
+      <if test="updatetime != null">
+        and updateTime = #{updatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createtime != null">
+        and createTime = #{createtime,jdbcType=TIMESTAMP}
+      </if>
+  	</where>
+  </sql>
+  <select id="queryConsumers" parameterType="com.risk.dal.credit.entity.Consumer" resultMap="BaseResultMap">
+  	select 
+  	m.id, m.companyId, m.loginName, m.name, m.password, m.rankLevel, m.status, m.cardId, m.address, m.phone, 
+    m.mail, m.operName, m.updateTime, m.createTime, y.companyName
+  	from r_consumer m left join r_company y on y.id = m.companyId
+  	<include refid="whereSql"></include>
+  	order by createTime desc
+  </select>
+  <select id="queryConsumersCount" parameterType="com.risk.dal.credit.entity.Consumer" resultType="int">
+  	select 
+  	count(1)
+  	from r_consumer
+  	<include refid="whereSql"></include>
+  </select>
+</mapper>

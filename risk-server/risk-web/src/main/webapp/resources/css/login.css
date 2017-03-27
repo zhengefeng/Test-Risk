@@ -1,0 +1,199 @@
+/*
+* @Author: Administrator
+* @Date:   2016-08-24 14:06:58
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-08-29 16:47:23
+*/
+body {
+	background:#fff url(../images/login_bg.jpg) fixed center center no-repeat;
+    background-size: auto 100%;	
+
+}
+.login_content {
+	position: absolute;
+	height: 100%;
+	width: 1180px;
+	top: 0;
+	left: 50%;
+	margin-left: -590px;
+}
+.login_content h1 {
+	position: absolute;
+	width: 111px;
+	height: 75px;
+	top: 90px;
+	left: 50px;
+	text-indent: -9999px;
+	background: url(../images/logo_index.png) center center no-repeat;
+	background-size: 100% 100%;
+}
+.login_enter {
+	position: absolute;
+	width: 570px;
+	padding: 20px;
+	top: 25%;
+	left: 50%;
+	margin-left: -285px;
+	background: url(../images/login_bg_center.png) repeat;/* 中间透明背景 */
+	z-index: 8888;
+	box-shadow: 1px 1px 5px #ccc;
+}
+.login_enter .login_left {
+	float: left;
+	width: 310px;
+	border-right: 1px solid #e8e8e8;
+}
+.login_enter .login_right {
+	float: left;
+	width: 250px;
+}
+.login_left .p1 {
+	width: 280px;
+	height: 30px;
+	margin-bottom: 25px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #002f59;
+	text-align: left;
+	border-bottom: 2px solid #E3E3E3;
+}
+.login_left .inst {
+	margin-bottom: 15px;
+	font-size: 14px;
+	color: #414e5e;
+}
+.login_left .inst input {
+	display: inline-block;
+	width: 218px;
+	height: 40px;
+	border: 1px solid #dddddd;
+	text-indent: 10px;
+	outline: none;
+	line-height: 40px;
+	background: #f9f9f9;
+}
+.login_left .inst-special {
+	margin-bottom: 0;
+}
+.login_left .inst-special  input {
+	width: 120px;
+	margin-right: 5px;
+}
+
+.changedCode{
+width:88px;
+height:40px;
+display:inline-block;
+}
+
+.changedCode img{
+  
+  	display:inline-block;
+    width:100%;.
+    height: 100%;
+    vertical-align:middle;
+  
+ }
+.login_left .inst-special .change {
+
+	margin-left: 60px;
+	font-size: 16px;
+	line-height: 30px;
+	color: #073b63;
+		text-align: right;
+	margin-right: 28px;
+	
+}
+.err_tips {
+	color: #ed0101;
+	line-height: 25px;
+	font-size: 12px;
+	margin-left: 60px;
+	margin-right: 25px;
+}
+
+.login_left button {
+    display: block;
+    width: 280px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #002f59;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px auto;
+    margin-left: 0px;
+}
+.login_left .forget_pass {
+	text-align: right;
+	margin-right: 15px;
+	color: #073b63;
+}
+.login_right .title {
+	font-size: 22px;
+	color: #333;
+	text-align: center;
+	font-family: "宋体";
+	margin-top: 65px;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+.login_right img {
+	display: block;
+	margin: 40px auto;
+}
+.public_footer {
+	position: absolute;
+	height: 75px;
+	width: 100%;
+	bottom: 0;
+	right: 0;
+	left: 0;	
+	padding-top: 25px;
+	
+	font-size: 12px;	
+	background: #002f59;
+	z-index: 999;
+}
+
+.public_footer p{
+   text-align: center;
+    color: #ACADB0;
+}
+.black-bg {
+	width: 100%;
+	background-color: #000;
+	height: 100%;
+	left: 0;
+	top: 0;
+	clear: both;
+	position: fixed;
+	opacity: 0.8;
+	z-index: 9998;
+}
+.popup {
+	background-color: #fff;
+	width: 436px;
+	height: 268px;
+	position: fixed;
+	top: 40%;
+	margin-top: -134px;
+	left: 50%;
+	margin-left: -237px;
+	border-radius: 5px;
+	z-index: 9999;
+	padding: 30px 20px;
+	border: 1px solid #A6A6A6;
+}
+.popup p {
+	font-size: 18px;
+	margin-top: 50px;
+	text-align: center;
+	line-height:40px;
+}
+.popup-close {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}

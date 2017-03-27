@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.risk.dal.credit.mapper.InterParamMapper">
+  <resultMap id="BaseResultMap" type="com.risk.dal.credit.entity.InterParam">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="interId" jdbcType="VARCHAR" property="interid" />
+    <result column="interCode" jdbcType="VARCHAR" property="intercode" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="paramType" jdbcType="VARCHAR" property="paramtype" />
+    <result column="isMust" jdbcType="SMALLINT" property="ismust" />
+    <result column="lengths" jdbcType="INTEGER" property="lengths" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="label" jdbcType="VARCHAR" property="label"/>
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, interId, interCode, name, paramType, isMust,lengths, description,label, updateTime, createTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_interparam
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from r_interparam
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.risk.dal.credit.entity.InterParam">
+    insert into r_interparam (id, interId, interCode, 
+      name, paramType, isMust, lengths
+      description,label, updateTime, createTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{interid,jdbcType=VARCHAR}, #{intercode,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{paramtype,jdbcType=VARCHAR}, #{ismust,jdbcType=SMALLINT}, #{lengths,jdbcType=INTEGER}
+      #{description,jdbcType=VARCHAR},#{label,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.risk.dal.credit.entity.InterParam">
+    insert into r_interparam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="interid != null">
+        interId,
+      </if>
+      <if test="intercode != null">
+        interCode,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="paramtype != null">
+        paramType,
+      </if>
+      <if test="ismust != null">
+        isMust,
+      </if>
+      <if test="lengths != null">
+        lengths,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="label != null">
+        description,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="interid != null">
+        #{interid,jdbcType=VARCHAR},
+      </if>
+      <if test="intercode != null">
+        #{intercode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="paramtype != null">
+        #{paramtype,jdbcType=VARCHAR},
+      </if>
+      <if test="ismust != null">
+        #{ismust,jdbcType=SMALLINT},
+      </if>
+      <if test="lengths != null">
+        #{lengths,jdbcType=INTEGER}
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.risk.dal.credit.entity.InterParam">
+    update r_interparam
+    <set>
+      <if test="interid != null">
+        interId = #{interid,jdbcType=VARCHAR},
+      </if>
+      <if test="intercode != null">
+        interCode = #{intercode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="paramtype != null">
+        paramType = #{paramtype,jdbcType=VARCHAR},
+      </if>
+      <if test="ismust != null">
+        isMust = #{ismust,jdbcType=SMALLINT},
+      </if>
+      <if test="lengths != null">
+        lengths = #{lengths,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.risk.dal.credit.entity.InterParam">
+    update r_interparam
+    set interId = #{interid,jdbcType=VARCHAR},
+      interCode = #{intercode,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      paramType = #{paramtype,jdbcType=VARCHAR},
+      isMust = #{ismust,jdbcType=SMALLINT},
+      lengths = #{lengths,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

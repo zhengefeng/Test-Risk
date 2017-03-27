@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.risk.dal.credit.mapper.ProviderInterDetailMapper">
+  <resultMap id="BaseResultMap" type="com.risk.dal.credit.entity.ProviderInterDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="providerInterId" jdbcType="INTEGER" property="providerinterid" />
+    <result column="providerCode" jdbcType="INTEGER" property="providercode" />
+    <result column="providerInterCode" jdbcType="INTEGER" property="providerintercode" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="params" jdbcType="VARCHAR" property="params" />
+    <result column="returnCode" jdbcType="VARCHAR" property="returncode" />
+    <result column="returnData" jdbcType="VARCHAR" property="returndata" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, providerInterId, providerCode, providerInterCode, price, status, params, returnCode, 
+    returnData, createTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_providerinterdetail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from r_providerinterdetail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.risk.dal.credit.entity.ProviderInterDetail">
+    insert into r_providerinterdetail (id, providerInterId, providerCode, 
+      providerInterCode, price, status, 
+      params, returnCode, returnData, 
+      createTime, updateTime)
+    values (#{id,jdbcType=INTEGER}, #{providerinterid,jdbcType=INTEGER}, #{providercode,jdbcType=INTEGER}, 
+      #{providerintercode,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{status,jdbcType=SMALLINT}, 
+      #{params,jdbcType=VARCHAR}, #{returncode,jdbcType=VARCHAR}, #{returndata,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.risk.dal.credit.entity.ProviderInterDetail">
+    insert into r_providerinterdetail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="providerinterid != null">
+        providerInterId,
+      </if>
+      <if test="providercode != null">
+        providerCode,
+      </if>
+      <if test="providerintercode != null">
+        providerInterCode,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="params != null">
+        params,
+      </if>
+      <if test="returncode != null">
+        returnCode,
+      </if>
+      <if test="returndata != null">
+        returnData,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="providerinterid != null">
+        #{providerinterid,jdbcType=INTEGER},
+      </if>
+      <if test="providercode != null">
+        #{providercode,jdbcType=INTEGER},
+      </if>
+      <if test="providerintercode != null">
+        #{providerintercode,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="params != null">
+        #{params,jdbcType=VARCHAR},
+      </if>
+      <if test="returncode != null">
+        #{returncode,jdbcType=VARCHAR},
+      </if>
+      <if test="returndata != null">
+        #{returndata,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.risk.dal.credit.entity.ProviderInterDetail">
+    update r_providerinterdetail
+    <set>
+      <if test="providerinterid != null">
+        providerInterId = #{providerinterid,jdbcType=INTEGER},
+      </if>
+      <if test="providercode != null">
+        providerCode = #{providercode,jdbcType=INTEGER},
+      </if>
+      <if test="providerintercode != null">
+        providerInterCode = #{providerintercode,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="params != null">
+        params = #{params,jdbcType=VARCHAR},
+      </if>
+      <if test="returncode != null">
+        returnCode = #{returncode,jdbcType=VARCHAR},
+      </if>
+      <if test="returndata != null">
+        returnData = #{returndata,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.risk.dal.credit.entity.ProviderInterDetail">
+    update r_providerinterdetail
+    set providerInterId = #{providerinterid,jdbcType=INTEGER},
+      providerCode = #{providercode,jdbcType=INTEGER},
+      providerInterCode = #{providerintercode,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      status = #{status,jdbcType=SMALLINT},
+      params = #{params,jdbcType=VARCHAR},
+      returnCode = #{returncode,jdbcType=VARCHAR},
+      returnData = #{returndata,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

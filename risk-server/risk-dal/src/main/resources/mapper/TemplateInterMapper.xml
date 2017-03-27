@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.risk.dal.credit.mapper.TemplateInterMapper">
+  <resultMap id="BaseResultMap" type="com.risk.dal.credit.entity.TemplateInter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="templateId" jdbcType="INTEGER" property="templateid" />
+    <result column="productId" jdbcType="VARCHAR" property="productid" />
+    <result column="infoType" jdbcType="INTEGER" property="infotype" />
+    <result column="orderIndex" jdbcType="INTEGER" property="orderindex" />
+    <result column="operName" jdbcType="VARCHAR" property="opername" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, templateId, productId, infoType, orderIndex, operName, createTime
+  </sql>
+
+  <insert id="insertAll" parameterType="java.util.List">
+    insert into r_templateinter (templateId, productId,
+       orderIndex, operName, infoType, createTime)
+    values
+    <foreach collection="list" item="it" separator=",">
+      (
+        #{it.templateid,jdbcType=INTEGER}, #{it.productid,jdbcType=INTEGER},
+        #{it.orderindex,jdbcType=INTEGER}, #{it.opername,jdbcType=VARCHAR},
+        #{it.infotype,jdbcType=VARCHAR}, sysdate()
+      )
+    </foreach>
+
+  </insert>
+
+  <select id="queryByTemplateId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from r_templateinter
+    where templateId = #{id,jdbcType=INTEGER}
+
+  </select>
+
+  <!--
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_templateinter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from r_templateinter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.risk.dal.credit.entity.TemplateInter">
+    insert into r_templateinter (id, templateId, productId, 
+       orderIndex, operName,
+      createTime)
+    values (#{id,jdbcType=INTEGER}, #{templateid,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, 
+       #{orderindex,jdbcType=INTEGER}, #{opername,jdbcType=VARCHAR},
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.risk.dal.credit.entity.TemplateInter">
+    insert into r_templateinter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="templateid != null">
+        templateId,
+      </if>
+      <if test="productid != null">
+        productId,
+      </if>
+      <if test="orderindex != null">
+        orderIndex,
+      </if>
+      <if test="opername != null">
+        operName,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="orderindex != null">
+        #{orderindex,jdbcType=INTEGER},
+      </if>
+      <if test="opername != null">
+        #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.risk.dal.credit.entity.TemplateInter">
+    update r_templateinter
+    <set>
+      <if test="templateid != null">
+        templateId = #{templateid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null">
+        productId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="orderindex != null">
+        orderIndex = #{orderindex,jdbcType=INTEGER},
+      </if>
+      <if test="opername != null">
+        operName = #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.risk.dal.credit.entity.TemplateInter">
+    update r_templateinter
+    set templateId = #{templateid,jdbcType=INTEGER},
+      productId = #{productid,jdbcType=INTEGER},
+      orderIndex = #{orderindex,jdbcType=INTEGER},
+      operName = #{opername,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  -->
+</mapper>

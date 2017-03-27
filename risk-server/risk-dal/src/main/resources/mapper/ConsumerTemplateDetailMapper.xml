@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.risk.dal.credit.mapper.ConsumerTemplateDetailMapper">
+  <resultMap id="BaseResultMap" type="com.risk.dal.credit.entity.ConsumerTemplateDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="consumerId" jdbcType="INTEGER" property="consumerid" />
+    <result column="consumerName" jdbcType="VARCHAR" property="consumername" />
+    <result column="companyId" jdbcType="INTEGER" property="companyid" />
+    <result column="templateId" jdbcType="INTEGER" property="templateid" />
+    <result column="params" jdbcType="VARCHAR" property="params" />
+    <result column="orderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="personName" jdbcType="VARCHAR" property="personname" />
+    <result column="cardId" jdbcType="VARCHAR" property="cardid" />
+    <result column="returnData" jdbcType="VARCHAR" property="returndata" />
+    <result column="totalPrice" jdbcType="DECIMAL" property="totalprice" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, consumerId, consumerName, companyId, templateId, params, orderId, personName, cardId, returnData,
+    totalPrice, createTime, updateTime
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from r_consumertemplatedetail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <sql id="Page_Column_List">
+    id, consumerId, consumerName, companyId, templateId, orderId, personName, cardId,
+    totalPrice, createTime, updateTime
+  </sql>
+
+  <sql id="pageCondi">
+    from r_consumertemplatedetail
+    where 1=1
+
+    <if test="consumerid != null">
+      and consumerId = #{consumerid,jdbcType=INTEGER}
+    </if>
+    <if test="companyid != null">
+      and companyId = #{companyid,jdbcType=INTEGER}
+    </if>
+    <if test="consumername != null and consumername != '' ">
+      and consumerName = #{consumername,jdbcType=VARCHAR}
+    </if>
+    <if test="orderid != null and orderid != '' ">
+      and orderId = #{orderid,jdbcType=VARCHAR}
+    </if>
+    <if test="personname != null and personname != '' ">
+      and personName = #{personname,jdbcType=VARCHAR}
+    </if>
+    <if test="cardid != null and cardid != '' ">
+      and cardId = #{cardid,jdbcType=VARCHAR}
+    </if>
+
+    <if test="startDate != null and startDate != '' ">
+      and createTime &gt;= STR_TO_DATE(#{startDate}, '%Y-%m-%d')
+    </if>
+    <if test="endDate != null and endDate != '' ">
+      and createTime &lt;= STR_TO_DATE(#{endDate}, '%Y-%m-%d')
+    </if>
+
+  </sql>
+
+  <select id="queryPageCount" parameterType="com.risk.dal.credit.dto.ConsumerTemplateDetailDto" resultType="java.lang.Integer">
+    select count(1)
+    <include refid="pageCondi"/>
+  </select>
+
+
+  <select id="queryPage" resultMap="BaseResultMap">
+    select <include refid="Page_Column_List"/>
+    <include refid="pageCondi"/>
+    order by createTime desc
+  </select>
+
+
+  <insert id="insert" parameterType="com.risk.dal.credit.entity.ConsumerTemplateDetail" useGeneratedKeys="true" keyProperty="id">
+    insert into r_consumertemplatedetail (id,consumername, consumerId, companyId,
+      templateId, params, orderId, 
+      personName, cardId, returnData, 
+      totalPrice, createTime, updateTime
+      )
+    values (#{id,jdbcType=INTEGER},#{consumername,jdbcType=VARCHAR}, #{consumerid,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER},
+      #{templateid,jdbcType=INTEGER}, #{params,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, 
+      #{personname,jdbcType=VARCHAR}, #{cardid,jdbcType=VARCHAR}, #{returndata,jdbcType=VARCHAR}, 
+      #{totalprice,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.risk.dal.credit.entity.ConsumerTemplateDetail">
+    insert into r_consumertemplatedetail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="consumername != null">
+        consumername,
+      </if>
+      <if test="consumerid != null">
+        consumerId,
+      </if>
+      <if test="companyid != null">
+        companyId,
+      </if>
+      <if test="templateid != null">
+        templateId,
+      </if>
+      <if test="params != null">
+        params,
+      </if>
+      <if test="orderid != null">
+        orderId,
+      </if>
+      <if test="personname != null">
+        personName,
+      </if>
+      <if test="cardid != null">
+        cardId,
+      </if>
+      <if test="returndata != null">
+        returnData,
+      </if>
+      <if test="totalprice != null">
+        totalPrice,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="consumername != null">
+        #{consumername,jdbcType=VARCHAR},
+      </if>
+      <if test="consumerid != null">
+        #{consumerid,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null">
+        #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=INTEGER},
+      </if>
+      <if test="params != null">
+        #{params,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="personname != null">
+        #{personname,jdbcType=VARCHAR},
+      </if>
+      <if test="cardid != null">
+        #{cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="returndata != null">
+        #{returndata,jdbcType=VARCHAR},
+      </if>
+      <if test="totalprice != null">
+        #{totalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+    <select id="queryTemplateSearchDetail" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+  	SELECT
+		p.`name`,p.marketPrice
+	FROM
+		r_product p
+	JOIN r_templateinter m ON p.id = m.productId
+	JOIN r_template t ON m.templateId = t.id
+	where t.id = #{templateId}
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.risk.dal.credit.entity.ConsumerTemplateDetail">
+    update r_consumertemplatedetail
+    <set>
+      <if test="consumerid != null">
+        consumerId = #{consumerid,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null">
+        companyId = #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="templateid != null">
+        templateId = #{templateid,jdbcType=INTEGER},
+      </if>
+      <if test="params != null">
+        params = #{params,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        orderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="personname != null">
+        personName = #{personname,jdbcType=VARCHAR},
+      </if>
+      <if test="cardid != null">
+        cardId = #{cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="returndata != null">
+        returnData = #{returndata,jdbcType=VARCHAR},
+      </if>
+      <if test="totalprice != null">
+        totalPrice = #{totalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.risk.dal.credit.entity.ConsumerTemplateDetail">
+    update r_consumertemplatedetail
+    set consumerId = #{consumerid,jdbcType=INTEGER},
+      companyId = #{companyid,jdbcType=INTEGER},
+      templateId = #{templateid,jdbcType=INTEGER},
+      params = #{params,jdbcType=VARCHAR},
+      orderId = #{orderid,jdbcType=VARCHAR},
+      personName = #{personname,jdbcType=VARCHAR},
+      cardId = #{cardid,jdbcType=VARCHAR},
+      returnData = #{returndata,jdbcType=VARCHAR},
+      totalPrice = #{totalprice,jdbcType=DECIMAL},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="queryStatisticsPerson" parameterType="java.lang.String" resultType="com.risk.dal.credit.dto.StatisticsPersonDto">
+      SELECT 
+    (SELECT 
+      COUNT(1) 
+    FROM
+      r_consumertemplatedetail 
+    WHERE personName = #{name,jdbcType=VARCHAR}) allQueryCount,
+    (SELECT 
+      SUM(DISTINCT companyId) 
+    FROM
+      r_consumertemplatedetail 
+    WHERE personName = #{name,jdbcType=VARCHAR}) allQueryCompanyCount,
+    (SELECT 
+      COUNT(1) 
+    FROM
+      r_consumertemplatedetail 
+    WHERE personName = #{name,jdbcType=VARCHAR} 
+      AND createTime > DATE_ADD(SYSDATE(), INTERVAL - 3 MONTH)) threeMonthQueryCount,
+    (SELECT 
+      SUM(DISTINCT companyId) 
+    FROM
+      r_consumertemplatedetail 
+    WHERE personName = #{name,jdbcType=VARCHAR} 
+      AND createTime > DATE_ADD(SYSDATE(), INTERVAL - 3 MONTH)) threeMonthQueryCompanyCount,
+    (SELECT 
+      COUNT(1) queryCount 
+    FROM
+      r_consumertemplatedetail 
+    WHERE personName = #{name,jdbcType=VARCHAR} 
+      AND createTime > DATE_ADD(SYSDATE(), INTERVAL - 6 MONTH)) sixMonthQueryCount,
+    (SELECT 
+      SUM(DISTINCT companyId) 
+    FROM
+      r_consumertemplatedetail 
+    WHERE personName = #{name,jdbcType=VARCHAR} 
+      AND createTime > DATE_ADD(SYSDATE(), INTERVAL - 6 MONTH)) sixMonthQueryCompanyCount 
+    
+  </select>
+
+</mapper>

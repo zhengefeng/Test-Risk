@@ -1,0 +1,215 @@
+@charset "utf-8";
+/* CSS Document */
+body{ background-color: #fff;}
+
+/*次导航*/
+.title{ font-size: 14px; border-bottom: 2px solid #CDD8E0; margin-top: 25px; padding-bottom: 8px;}
+.title a{ color: #333;}
+.title a.current{ color: #F24A39;}
+.title span{ padding-left: 5px; padding-right: 5px;}
+
+/*用户管理*/
+.content-bg{ background-color: #F9F9F9; border: 1px solid #DCDCDC; margin-top: 20px; padding-bottom: 20px; margin-bottom: 100px;}
+.content-bg-middle{ width: 1095px; margin: 0 auto;}
+.content-user-top,.content-table{ background-color: #fff; border:1px solid #DCDCDC; margin-top: 20px; /*overflow: hidden; */padding-bottom: 110px;}
+.content-bg .form-import{ margin-left: 80px;}
+.form-import label{ display: inline-block; width: 60px; text-align: right; margin-right: 10px; color: #333; line-height: 40px;}
+.form-import input{ border: 1px solid #DCDCDC; width: 205px; height: 40px; padding-left: 8px; line-height: 40px; background-color: #fff;}
+.form-box{ clear: both; margin-top: 20px; overflow: hidden;}
+.form-box p,.form-box-button p { float: left;}
+.form-box:not(:first-child){ margin-top: 10px;}
+.form-box p{ margin-right: 50px;}
+.form-box p:last-child{ margin-right: 0;}
+.form-box span{ display: inline-block; width: 214px; height: 40px;}
+
+/*按钮样式*/
+.form-button{ width: 218px; height: 50px; line-height: 50px; border:none; color: #fff; font-size: 18px; background-color: #F24A39; cursor: pointer; margin-right: 10px; font-weight: bold;}
+.form-box-button p { margin-top: 30px;}
+.form-box-button  .form-box-button-add{ background-color: #fff; border: 1px solid #F24A39; color: #F24A39;}
+
+/*表格 查询记录 模板管理*/
+.content-table{ border:none; padding-bottom: 0;}
+.content-table-grid{ width: 100%; text-align: center; border: 1px solid #CBCBCB; border-width: 0px 1px 1px 0px;}
+.content-table-grid td{ border:1px solid #CBCBCB; border-width:1px 0px 0px 1px; font-size: 12px; background-color: #fff;}
+.content-table-grid th{ border:1px solid #CBCBCB; border-width:1px 0px 0px 1px; background-color: #EAEAEA;}
+.content-table-grid tr{ height: 45px; line-height: 45px; color: #333;}
+.content-table-grid .dispose a{ display: inline-block;  color: #283C6C; border: 1px solid #283C6C; width: 75px; height: 25px; line-height: 25px; font-size: 12px; margin-right: 7px; cursor: pointer;}
+.content-table-grid .dispose-gray a{ border: 1px solid #DCDCDC; color: #DCDCDC;}
+/*计费明细*/
+.dispose-pop{ position: absolute; background-color: #fff; width: 440px; border: 1px solid #DCDCDC; font-size: 12px; line-height: 23px; z-index: 100; left: -255px; text-align: left; padding-left: 15px; top: 43px; padding-bottom: 20px;}
+.dispose-pop img{ position: absolute; right: 10px; top:-6px;}
+.dispose-pop p{ line-height: 25px;}
+.dispose-pop p:nth-child(2){ padding-top: 15px;}
+.content-table-grid .dispose-pop p span{ text-align: right; float: left; color: #333; width: 70px;}
+
+.dispose-pop table{ width: 93%; text-align: center; margin-top: 15px;border: 1px solid #CBCBCB; border-width: 0px 1px 1px 0px;}
+.content-table-grid .dispose-pop table td{ width: 50%; border:1px solid #CBCBCB; border-width:1px 0px 0px 1px;}
+.content-table-grid .dispose-pop table tr{ width: 50%; line-height: 25px; height: 25px;}
+
+/*费用合计*/
+.content-bg h4{ font-size: 14px; font-weight: bold; margin: 20px 0 50px 0;}
+.content-bg h4 span{ font-size: 30px; color: #F24A39;}
+
+
+/*翻页*/
+.page { text-align:center; height:27px; clear:both; margin-top:30px; padding-bottom:40px;}
+.page a.current{ background-color: #283C6C; color: #fff; border: none;}
+.page a { padding:5px 12px; border:#d8d8d8 1px solid; border-radius:2px; background:#fff; margin:0 4px; color:#666}
+.page input{ border:#d8d8d8 1px solid; height:28px; width:50px;}
+.page span.current { border: #eb5206 1px solid; padding:5px 8px; font-weight:bold; margin:0 4px; color: #fff; background-color:#eb5206}
+.page span.disabled { border: #eee 1px solid; padding:2px 5px; margin: 2px; color: #ddd}
+.page .page-confirm{ background-color: #283C6C; color: #fff; border:none; padding: 5px 15px; cursor: pointer;}
+
+/*弹窗*/
+.popup{ background: #fff; position: fixed; left: 50%; width: 716px; margin-left: -358px; z-index: 1000; top:22%; padding: 20px; padding-bottom: 30px;}
+.popup-close{ position: absolute; right: 20px; top:20px; cursor: pointer;}
+.popup .title{ margin-top: 0;}
+.popup form{ width: 610px; margin: 0 auto;}
+.popup-form-import{ font-size: 12px;}
+.popup-form-import label{ width: 60px; color: #333; line-height: 40px;}
+.popup-form-import .form-box p{ margin-right: 20px;}
+.popup-form-import .form-box p em{ color: #F34A38; padding-right: 3px; font-size: 16px; padding-top: 2px; vertical-align: middle;}
+.popup-form-import select{ width: 210px; height: 40px; border: 1px solid #DCDCDC; margin-left: -2px; padding-left: 5px;}
+.popup-form-import button{ margin: 30px auto 0 180px; height: 40px; line-height: 40px; font-size: 14px;}
+
+
+/*批量查询*/
+.batch-width{  width: 350px; margin: 0 auto; margin-top: 50px; padding-bottom: 265px;}
+.batch-width input[type='file']{ margin-bottom: 30px;}
+.batch-width a{ color: #666; text-decoration: underline;}
+
+
+/*新增报告模板*/
+.report-title input[type='checkbox']{ margin-left: 30px; margin-top: 30px; margin-right: 5px;}
+.report-title span{ color: #414E5E; font-weight: bold;}
+.added-mould-width{ width: 945px; margin: 40px auto; }
+.added-mould-width h3{ font-size: 18px; font-weight: bold; text-align: center;}
+.content-table-grid td span{ color: #F24A39;}
+.added-mould-select{ text-align: center; margin-top: 20px;}
+.added-mould-select span{ color: #F24A39;}
+/*返回上一页*/
+.back-page{ padding-bottom: 60px; margin-top: 10px;}
+.back-page a{ color: #333;}
+.back-page a:hover{ color: #F24A39;}
+
+/*弹窗标题*/
+.pop-title{ font-size: 18px; border-bottom: 2px solid #CDD8E0; padding-bottom: 7px;}
+
+/*个人信用报告*/
+.report-download{ float: right; margin-top: 20px; overflow: hidden;}
+.report-download a{ color: #283C6C; border: 1px solid #283C6C; font-size: 12px; padding: 3px 13px; display: inline-block;}
+.report-download a:nth-child(1){ margin-right: 5px;}
+
+.report-top{ background-color: #F9F9F9; border: 1px solid #DCDCDC; clear: both; margin-top: 60px; padding: 15px; font-size: 12px;}
+.report-top-box{ padding-bottom: 15px; overflow: hidden}
+.report-top-box div{ float: left; width: 300px;}
+
+/*表格开始*/
+.report-message-bg{ background-color: #F9F9F9; margin-top: 20px;}
+.report-message{ margin-top: 10px;}
+.report-message h2{ font-size: 18px; color: #F24A39; text-align: center; padding-top: 20px; font-weight: bold;}
+.report-message-table .report-message-title{ text-align: center; height: 45px; line-height: 45px; background-color: #E0E4E9; margin-top: 20px; font-weight: bold;}
+.report-message table{ width: 100%; border: 1px solid #DCDCDC; border-width: 0px 1px 1px 0px; font-size: 12px;}
+.report-message table td{ line-height: 42px; height: 42px; text-align: center; border:1px solid #DCDCDC; border-width:1px 0px 0px 1px;}
+.report-message-table1 td:nth-child(odd){ background-color: #F9F9F9; width: 20%;}
+.report-message-table1 td:nth-child(even){ width: 30%; background-color: #fff;}
+
+/*银行四要素*/
+.report-message-table2 td{ background-color: #fff; width: 30%;}
+.report-message-table2 tr:nth-child(1){ background-color: #F9F9F9;}
+.report-message-table2 td:nth-child(1){ background-color: #F9F9F9; width: 20%;}
+/*驾驶证状态查询*/
+.report-message-table3 tr{ width: 50%;}
+.report-message-table3 tr:nth-child(2){ background-color: #fff;}
+.report-message-table3 tr:nth-child(1){ background-color: #F9F9F9;}
+/*学历信息*/
+.report-message-table4 td{ width: 20%;}
+.report-message-table4 td:nth-child(odd){ background-color: #F9F9F9; width: 20%;}
+.report-message-table4 td:nth-child(even){ width: 20%; background-color: #fff;}
+/*涉诉风险（总信息）*/
+.report-message-table1 .report-message-sums{ vertical-align: middle; line-height: 22px; padding: 10px; text-align: left;}
+
+.tdLeft{
+    width: 210px;
+}
+/*个人担任法定代表人信息*/
+.report-message-table6 td{ background-color: #fff;}
+
+.width20{ width: 20%;}
+.state{ font-size: 12px; color: #F24A39; margin-top: 10px;}
+.report-message-details .report-message-details-table{ margin-top: 30px;}
+
+/*涉诉风险明细信息*/
+.report-message-details-table table{ width: 100%; border: 1px solid #DCDCDC; border-width: 0px 1px 1px 0px; font-size: 12px; margin-top: 15px;}
+.report-message-details-table table td,.report-message-details-table table th{ line-height: 42px; height: 42px; text-align: center; border:1px solid #DCDCDC; border-width:1px 0px 0px 1px;}
+.report-message-details-table table th{ background-color: #F9F9F9;}
+.report-message-details-table table td{ width: 16.6%; background-color: #fff;}
+/*信息概要*/
+.report-message-table5 td{background-color: #fff;}
+.report-message-table5 td:nth-child(odd){width: 20%;}
+.report-message-table5 td:nth-child(even){ width: 30%;}
+/*汇总信息*/
+.report-message-table7 td{ width: 11%;}
+.report-message-table7 td:not(:first-child){ background-color: #fff;}
+.report-message-table7 tr:nth-child(2) td{ background-color: #F9F9F9;}
+.report-message-table7 tr:first-child td{ background-color: #F9F9F9;}
+/*未结清业务明细（信用贷款）*/
+.report-message-table8 tr:nth-child(odd){ background-color: #F9F9F9; width: 12.5%;}
+.report-message-table8 tr:nth-child(even){ width: 12.5%; background-color: #fff;}
+/*2015年01月至2015年02月各期还款记录*/
+.report-message .report-message-table9{ border: 1px solid #DCDCDC; border-width: 0px 1px 0px 1px;}
+.report-message .report-message-table9 td{ border: 0; width: 4%; border-bottom: 1px solid #DCDCDC;}
+.report-message .report-message-table9 tr{ background-color: #f9f9f9;}
+.report-message .report-message-table9 tr:nth-child(3){ background-color: #fff;}
+
+/*须知*/
+.middle-width .notice{ margin-top: 20px; font-size: 12px; line-height: 23px;}
+
+
+/* 个人信用报告弹窗模板样例*/
+.black-bg {
+    width: 100%;
+    background-color: #000;
+    height: 100%;
+    left: 0;
+    top: 0;
+    clear: both;
+    position: fixed;
+    opacity: 0.6;
+    z-index: 99;
+}
+
+.popup_big {
+    background-color: #fff;
+    width:1200px; 
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    margin-top: -10px;
+    left: 50%;
+    margin-left: -590px;
+    border-radius: 5px;
+    z-index: 100;
+    padding: 40px 5px 10px 5px;
+    border: 1px solid #A6A6A6; 
+}
+.popup-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.content_popup{
+        width: 1199px;
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+ .login_report{
+     margin: 10px auto; 
+    width: 111px;
+    height: 75px;
+    text-indent: -9999px;
+    background: url(../images/logo_index.png) center center no-repeat;
+    background-size: 100% 100%;
+}

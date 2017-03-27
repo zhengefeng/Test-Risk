@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.risk.dal.credit.mapper.ProviderInterMapper">
+  <resultMap id="BaseResultMap" type="com.risk.dal.credit.entity.ProviderInter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="productId" jdbcType="INTEGER" property="productid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="providerCode" jdbcType="VARCHAR" property="providercode" />
+    <result column="interCode" jdbcType="VARCHAR" property="intercode" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="feeType" jdbcType="SMALLINT" property="feetype" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, productId, name, providerCode, interCode, price, feeType, status, description, 
+    updateTime, createTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_providerinter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from r_providerinter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.risk.dal.credit.entity.ProviderInter">
+    insert into r_providerinter (id, productId, name, 
+      providerCode, interCode, price, 
+      feeType, status, description, 
+      updateTime, createTime)
+    values (#{id,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{providercode,jdbcType=VARCHAR}, #{intercode,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{feetype,jdbcType=SMALLINT}, #{status,jdbcType=SMALLINT}, #{description,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.risk.dal.credit.entity.ProviderInter">
+    insert into r_providerinter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="productid != null">
+        productId,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="providercode != null">
+        providerCode,
+      </if>
+      <if test="intercode != null">
+        interCode,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="feetype != null">
+        feeType,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="providercode != null">
+        #{providercode,jdbcType=VARCHAR},
+      </if>
+      <if test="intercode != null">
+        #{intercode,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="feetype != null">
+        #{feetype,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.risk.dal.credit.entity.ProviderInter">
+    update r_providerinter
+    <set>
+      <if test="productid != null">
+        productId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="providercode != null">
+        providerCode = #{providercode,jdbcType=VARCHAR},
+      </if>
+      <if test="intercode != null">
+        interCode = #{intercode,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="feetype != null">
+        feeType = #{feetype,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.risk.dal.credit.entity.ProviderInter">
+    update r_providerinter
+    set productId = #{productid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      providerCode = #{providercode,jdbcType=VARCHAR},
+      interCode = #{intercode,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      feeType = #{feetype,jdbcType=SMALLINT},
+      status = #{status,jdbcType=SMALLINT},
+      description = #{description,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

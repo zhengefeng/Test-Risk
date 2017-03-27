@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>信用报告查询记录</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/credit.css">
+</head>
+
+<body>
+<div class="header">
+    <div class="header-top-bg">
+        <div class="middle-width">
+            <ul class="header-top">
+                <li><a href="#">豆豆小朋友</a>|</li>
+                <li class="system"><a href="#" style="color: #A24355">系统管理</a>|
+
+                    <ul class="system-nav">
+                        <img src="images/nav-top.png" style="position: absolute; top:-9px; left: 50px;" />
+                        <li class="system-nav-user"><a href="#">用户管理</a></li>
+                        <li class="system-nav-mould"><a href="#">模板管理</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">修改密码</a>|</li>
+                <li><a href="#">退出</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header-nav-bg">
+        <div class="middle-width">
+            <div class="header-nav-logo">
+                <img src="images/logo.png" />
+            </div>
+            <ul class="header-nav">
+                <li class="current"><a href="#">报告查询</a></li>
+                <li><a href="#">批量查询</a></li>
+                <li><a href="#">查询记录</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="middle-width">
+    <h3 class="title"><a href="#">首页<span>></span></a><a href="#" class="current">查询记录</a></h3>
+    <div class="content-bg">
+        <div class="content-bg-middle">
+            <div class="content-user-top">
+                <form class="form-import">
+                    <div class="form-box">
+                        <p><label>查询编号</label><input type="text" /></p>
+                        <p><label>查询姓名</label><input type="text" /></p>
+                        <p><label>身份证号</label><input type="text" /></p>
+                    </div>
+                    <div class="form-box">
+                        <p><label>操作人</label><input type="text" /></p>
+                        <p><label>开始日期</label><input type="date" /></p>
+                        <p><label>结束日期</label><input type="date" /></p>
+                    </div>
+                    <div class="form-box">
+                        <p><label>公司</label><input type="text" /></p>
+                    </div>
+                    <div class="form-box-button">
+                        <p><label></label><button class="form-button">查询</button></p>
+                    </div>
+                </form>
+            </div>
+            <div class="content-table">
+                <table cellpadding="0" cellspacing="0" class="content-table-grid">
+                    <tr>
+                        <th>查询编号</th>
+                        <th>查询时间</th>
+                        <th>被查询姓名</th>
+                        <th>被查询证件号码</th>
+                        <th>费用</th>
+                        <th>操作人</th>
+                        <th>处理</th>
+                    </tr>
+                    <tr>
+                        <td>yuedaadmin</td>
+                        <td>悦达管理员</td>
+                        <td>evvevevev</td>
+                        <td>geeeeeggwwwwwwwwwwwwg</td>
+                        <td>江苏悦达</td>
+                        <td>管理员</td>
+                        <td class="dispose"><a href="#">下载报告</a><a href="#">计费明细</a></td>
+                    </tr>
+                    <tr>
+                        <td>yuedaadmin</td>
+                        <td>悦达管理员</td>
+                        <td>evvevevev</td>
+                        <td>geeeeeggwwwwwwwwwwwwg</td>
+                        <td>江苏悦达</td>
+                        <td>管理员</td>
+                        <td class="dispose dispose-gray"><a href="#">下载报告</a><a href="#">计费明细</a></td>
+                    </tr>
+                    <tr>
+                        <td>yuedaadmin</td>
+                        <td>悦达管理员</td>
+                        <td>evvevevev</td>
+                        <td>geeeeeggwwwwwwwwwwwwg</td>
+                        <td>江苏悦达</td>
+                        <td>管理员</td>
+                        <td class="dispose dispose-gray"><a href="#">下载报告</a><a href="#">计费明细</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <h4>根据查询条件，本次查询的所有报告费用合计：<span>580</span> 元</h4>
+            <div class="page">
+                <a href="#"><</a>&nbsp;
+                <a href="#">1</a>&nbsp;
+                <a href="#">2</a>&nbsp;
+                <a href="#">3</a>&nbsp;
+                <a href="#">4</a>&nbsp;
+                <span>...</span>
+                <a href="#">></a>&nbsp;
+                <span>共7页&nbsp;, 跳转到&nbsp;</span>
+                <input type="text">&nbsp;
+                <a class="page-confirm">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="middle-width">
+        <p style="color: #A3ACB8;">版权所有 上海欣亨金融信息服务有限公司 沪ICP备 15000682号-1</p>
+    </div>
+</div>
+</body>
+</html>

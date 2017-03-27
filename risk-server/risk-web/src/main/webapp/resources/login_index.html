@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<title>征信登录页</title>
+</head>
+<body>
+
+<div class="login_content">
+
+<!--  ------------------------>
+  <h1>全民财富征信系统</h1>
+<div class="login_enter">
+
+	<div class="login_left">
+	     <p class="p1">登录</p>
+
+		<div class="inst">
+		<label for="username">用户名：</label>
+		<input type="text"id="username"placeholder="请输入用户名"class="required"/>
+		</div>
+
+		<div class="inst">
+		<label for="pass1">密 &nbsp 码：</label>
+		<input type="password"id="pass1"placeholder="6-20位数字，字母"class="required"/>
+		</div>
+
+		<div class="inst inst-special">
+		<label for="yanzheng">验证码：</label>
+		<input type="password"id="yanzheng"placeholder="图形验证码"class="required"/>
+			<p class="changedCode">
+		   		 <img src="images/code_yz.png" />
+			</p>
+		     <p class="change">换一个</p>  					   
+		</div>
+        
+<!-- 这里放所有的错误提示 -->
+       <p  class="err_tips"style="display:none;">请输入图片中的验证码请输</p>
+
+	    <button>登录</button>
+	    <p class="forget_pass">忘记密码或申请账号</p>
+	</div>
+
+	<div class="login_right">
+		    <p class="title">全民财富征信系统</p>
+		    <img src="images/check.png"height="25"width="154">
+	</div>
+
+</div>
+<!-- ------------------ -->
+</div>
+
+
+<div class="public_footer">
+	<p style="color: #A3ACB8;">版权所有 上海欣亨金融信息服务有限公司 沪ICP备 15000682号-1</p>
+</div>
+
+<!-- 遮罩 -->
+<div class="black-bg"style="display:none"id="blackbg" onclick="closePop()"></div>
+
+<!-- 去登录 -->
+<div class="popup" style="display:none" id="tips">
+<img src="images/popup-close.png" width="13" height="13" class="popup-close" onclick="closePop()"/>
+<img src="images/tip.png" height="64" width="64"/ style="display:block; margin:20px auto;">
+
+<p>如您忘记密码或者需要申请新系统账号<br>请联系公司系统管理员</p>
+
+</div>
+
+<script type="text/javascript">
+  //弹窗
+    function closePop() {
+    $('#blackbg').hide();
+    $('.popup').hide();
+  }
+
+   function openPop(id) {
+    $('#blackbg').show();
+    $('#' + id).show();
+ 
+}
+
+$(document).ready(function() {	
+		 var a = document.documentElement.clientHeight;
+		 //alert(a);
+        if (parseInt(a) < 750) {
+            $(".login_enter").css("top", "20%");
+            $(".public_footer").css("height","50px");
+            $(".login_content h1").css("top","50px");
+        }
+        //   if (parseInt(a) <645) {            
+        //     $(".public_footer").css("display","none");            
+        // }
+	
+$(".forget_pass").click(function(event) {
+	openPop("tips");
+});
+
+	});
+</script>	  
+
+</body>
+</html>

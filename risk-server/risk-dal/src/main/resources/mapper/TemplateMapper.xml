@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.risk.dal.credit.mapper.TemplateMapper">
+  <resultMap id="BaseResultMap" type="com.risk.dal.credit.entity.Template">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="companyId" jdbcType="INTEGER" property="companyid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="tempName" jdbcType="INTEGER" property="tempname" />
+    <result column="totalPrice" jdbcType="DECIMAL" property="totalprice" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="orderIndex" jdbcType="INTEGER" property="orderindex" />
+    <result column="operName" jdbcType="VARCHAR" property="opername" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, companyId, userId, tempName, totalPrice, status, orderIndex, operName, createTime, updateTime
+  </sql>
+
+    <select id="queryTemplateAllInfoType" resultType="com.risk.dal.credit.dto.InterDto">
+        SELECT
+          ti.`templateId` templateId,
+          ti.`infoType` infoType
+        FROM
+          r_template t
+          LEFT JOIN r_templateinter ti
+            ON t.id = ti.`templateId`
+        WHERE 1=1
+        <if test="companyid != null">
+            and t.companyId = #{companyid,jdbcType=INTEGER}
+        </if>
+        <if test="userid != null">
+            and t.userId = #{userid,jdbcType=INTEGER}
+        </if>
+        <if test="status != null">
+            and t.status = #{status,jdbcType=SMALLINT}
+        </if>
+        GROUP BY ti.`templateId`, ti.infoType
+
+    </select>
+
+  <select id="queryUserAllTemplate" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from r_template
+    where 1=1
+        <if test="companyid != null">
+           and companyId = #{companyid,jdbcType=INTEGER}
+        </if>
+        <if test="userid != null">
+           and userId = #{userid,jdbcType=INTEGER}
+        </if>
+
+        <if test="status != null">
+           and status = #{status,jdbcType=SMALLINT}
+        </if>
+    ORDER BY STATUS, createTime DESC
+  </select>
+
+  <insert id="insert" parameterType="com.risk.dal.credit.entity.Template" useGeneratedKeys="true" keyProperty="id">
+    insert into r_template (userId, companyId, tempName,
+    totalPrice, status, orderIndex,
+    operName, createTime, updateTime
+    )
+    values (#{userid,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER}, #{tempname,jdbcType=INTEGER},
+    #{totalprice,jdbcType=DECIMAL}, #{status,jdbcType=SMALLINT}, #{orderindex,jdbcType=INTEGER},
+    #{opername,jdbcType=VARCHAR}, sysdate(), sysdate()
+    )
+  </insert>
+
+  <update id="updateBySelective" parameterType="com.risk.dal.credit.entity.Template">
+    update r_template
+    <set>
+      <if test="companyid != null">
+        companyId = #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="tempname != null">
+        tempName = #{tempname,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null">
+        totalPrice = #{totalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="orderindex != null">
+        orderIndex = #{orderindex,jdbcType=INTEGER},
+      </if>
+      <if test="opername != null">
+        operName = #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+
+  </update>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_template
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <!--
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from r_template
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.risk.dal.credit.entity.Template">
+    insert into r_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyid != null">
+        companyId,
+      </if>
+      <if test="tempname != null">
+        tempName,
+      </if>
+      <if test="totalprice != null">
+        totalPrice,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="orderindex != null">
+        orderIndex,
+      </if>
+      <if test="opername != null">
+        operName,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null">
+        #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="tempname != null">
+        #{tempname,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null">
+        #{totalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="orderindex != null">
+        #{orderindex,jdbcType=INTEGER},
+      </if>
+      <if test="opername != null">
+        #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.risk.dal.credit.entity.Template">
+    update r_template
+    <set>
+      <if test="companyid != null">
+        companyId = #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="tempname != null">
+        tempName = #{tempname,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null">
+        totalPrice = #{totalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="orderindex != null">
+        orderIndex = #{orderindex,jdbcType=INTEGER},
+      </if>
+      <if test="opername != null">
+        operName = #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.risk.dal.credit.entity.Template">
+    update r_template
+    set companyId = #{companyid,jdbcType=INTEGER},
+      tempName = #{tempname,jdbcType=INTEGER},
+      totalPrice = #{totalprice,jdbcType=DECIMAL},
+      status = #{status,jdbcType=SMALLINT},
+      orderIndex = #{orderindex,jdbcType=INTEGER},
+      operName = #{opername,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  -->
+</mapper>

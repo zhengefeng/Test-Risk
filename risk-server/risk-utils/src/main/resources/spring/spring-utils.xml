@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.2.xsd
+						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd"
+>
+	<context:component-scan base-package="com.common.utils"></context:component-scan>
+	<context:property-placeholder location="file:/app/risk/config/config.properties"/>
+
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="mail.qmcaifu.com" />
+		<property name="port" value="465"></property>
+		<property name="protocol" value="smtps"></property>
+		<property name="username" value="errortip@qmcaifu.com" />
+		<property name="password" value="errortip" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.transport.protocol">smtps</prop>
+				<prop key="mail.smtps.ssl.trust">*</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="redisManager" class="com.common.utils.cache.redis.RedisManager">
+		<constructor-arg index="0" value="${redis_server}" />
+		<constructor-arg index="1" value="${redis_server_port}" />
+		<constructor-arg index="2" value="${redis_server_hold}" />
+	</bean>
+
+    <bean class="com.risk.integration.util.HttpPostUtil">
+        <property name="suanHuaOrgSecretKey" value="${suan_hua_org_secret_key}"/>
+        <property name="suanHuaOrgCode" value="${suan_hua_org_code}"/>
+        <property name="suanHuaApiURL" value="${suan_hua_api_URL}"/>
+    </bean>
+</beans>

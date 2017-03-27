@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.risk.dal.credit.mapper.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.risk.dal.credit.entity.Company">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyname" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="operName" jdbcType="VARCHAR" property="opername" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, companyName, status, operName, createTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_company
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from r_company
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.risk.dal.credit.entity.Company">
+    insert into r_company (id, companyName, status, 
+      operName, createTime, updateTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{companyname,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT}, 
+      #{opername,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.risk.dal.credit.entity.Company">
+    insert into r_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyname != null">
+        companyName,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="opername != null">
+        operName,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="opername != null">
+        #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.risk.dal.credit.entity.Company">
+    update r_company
+    <set>
+      <if test="companyname != null">
+        companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="opername != null">
+        operName = #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.risk.dal.credit.entity.Company">
+    update r_company
+    set companyName = #{companyname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=SMALLINT},
+      operName = #{opername,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <sql id="whereSql">
+  	<where>
+  	  <if test="companyname != null">
+        and companyName = #{companyname,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        and status = #{status,jdbcType=SMALLINT}
+      </if>
+      <if test="opername != null">
+        and operName = #{opername,jdbcType=VARCHAR}
+      </if>
+      <if test="createtime != null">
+        and createTime = #{createtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatetime != null">
+        and updateTime = #{updatetime,jdbcType=TIMESTAMP}
+      </if>
+  	</where>
+  </sql>
+  <select id="queryCompanys" parameterType="com.risk.dal.credit.entity.Company" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List"></include>
+  	from r_company
+  	<include refid="whereSql"></include>
+  	order by createTime
+  </select>
+  <select id="queryCompanysCount" parameterType="com.risk.dal.credit.entity.Company" resultType="java.lang.Integer">
+  	select 
+  	count(1)
+  	from r_company
+  	<include refid="whereSql"></include>
+  </select>
+</mapper>
